@@ -5,10 +5,41 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <link rel="stylesheet" href="./assets/styles.css">
-        <title>Botany Game</title>
+        <title>Botany Bliss</title>
     </head>
 
     <body>
+        <header class="intro">
+            <h1>Botany Bliss</h1>
+            <p>Try out your green thumb without killing plants at home!</p>
+        </header>
+        
+        <div class="game">
+
+            <!-- Player Stats -->
+            <div class="stats">
+                <span class="stat">XP: <strong><span id="xpText">0</span></strong></span>
+                <span class="stat">Coins: <strong><span id="coinText">50</span></strong></span>
+            </div>
+
+            <!-- Control Buttons -->
+            <div class="controls">
+                <button id="button1">Place plant in low light</button>
+                <button id="button2">Place plant in medium light</button>
+                <button id="button3">Place plant in bright light</button>
+            </div>
+
+            <!-- Plant Stats -->
+            <div class="plantStats">
+                <span class="stat">Plant Name: <strong><span id="plantName"></span></strong></span>
+                <span class="stat">Health: <strong><span id="plantHealth"></span></strong></span>
+            </div>
+
+            <!-- Text -->
+             <div class="text">
+                Welcome to Botany Bliss! You've just been gifted a plant with easy care reqirements. You bring the plant home, what is your next move?
+             </div>
+        </div>
 
     <script src="./assets/script.js"></script>
     </body>
