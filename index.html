@@ -9,7 +9,7 @@
     </head>
 
     <body>
-        <header class="intro">
+        <header>
             <h1>Botany Bliss</h1>
             <p>Try out your green thumb without killing plants at home!</p>
         </header>
@@ -22,6 +22,11 @@
                 <span class="stat">Coins: <strong><span id="coinText">50</span></strong></span>
             </div>
 
+            <!-- Text -->
+            <div class="text">
+                Welcome to Botany Bliss! You've just been gifted a Snake Plant (care level: easy). You bring the plant home, what is your next move?
+             </div>
+
             <!-- Control Buttons -->
             <div class="controls">
                 <button id="button1">Place plant in low light</button>
@@ -29,16 +34,11 @@
                 <button id="button3">Place plant in bright light</button>
             </div>
 
-            <!-- Plant Stats -->
+            <!-- Plant Stats TODO: append each plant in inventory with buttons below, text changes color on health -->
             <div class="plantStats">
                 <span class="stat">Plant Name: <strong><span id="plantName"></span></strong></span>
                 <span class="stat">Health: <strong><span id="plantHealth"></span></strong></span>
             </div>
-
-            <!-- Text -->
-             <div class="text">
-                Welcome to Botany Bliss! You've just been gifted a plant with easy care reqirements. You bring the plant home, what is your next move?
-             </div>
         </div>
 
     <script src="./assets/script.js"></script>

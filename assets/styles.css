@@ -4,17 +4,39 @@
     padding: 0;
 }
 
-/* body {
+body {
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.intro {
+header {
     text-align: center;
+    padding: 2rem;
 }
 
 .game {
-    max-width: 500px;
-    max-height: 600px;
-} */
+    max-width: 600px;
+    max-height: 800px;
+    padding: 40px;
+    border: 2px solid black;
+    border-radius: 5px;
+}
+
+.controls {
+    display: flex;
+    justify-content: space-between;
+}
+
+.controls button {
+    padding: 10px;
+    border-radius: 20px;
+}
+
+.stats, .plantStats {
+    padding: 10px;
+}
+
+.text {
+    padding: 10px;
+}
