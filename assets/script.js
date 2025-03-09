@@ -1,0 +1,1 @@
+// Each plant is an object, it will have name, water(health), light, clipping cost, do not combine water and light to make health, just keep separate
