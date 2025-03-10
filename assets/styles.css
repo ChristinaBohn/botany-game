@@ -37,6 +37,11 @@ body {
     margin: 5px;
 }
 
+.plantControls button {
+    padding: 6px;
+    border-radius: 20px;
+}
+
 .stats, .plantStats {
     padding: 10px;
 }

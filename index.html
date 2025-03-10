@@ -25,7 +25,7 @@
             </div>
 
             <!-- Text -->
-            <div class="text">
+            <div id="text">
                 Welcome to Botany Bliss! You've just been gifted a Snake Plant (care level: easy). You bring the plant home, what is your next move?
              </div>
 
@@ -37,23 +37,24 @@
             </div>
 
             <!-- Plant Tiles -->
-            <div>
-                <!-- Plant Stats TODO: append each plant in inventory with buttons below, text changes color on health -->
-                <div class="plantStats">
-                    <span class="stat">Plant Name: <strong><span id="plantName"></span></strong></span>
-                    <span class="stat">Health: <strong><span id="plantHealth"></span></strong></span>
-                    <span class="stat">Location: <strong><span id="plantLight"></span></strong></span>
-                </div>
+            <div class="plantTiles">
+                
+                <div>
+                    <!-- Plant Stats TODO: append each plant in inventory with buttons below, text changes color on health -->
+                    <div class="plantStats">
+                        <span class="stat">Plant Name: <strong><span id="plantName"></span></strong></span>
+                        <span class="stat">Health: <strong><span id="healthText"></span></strong></span>
+                    </div>
 
-                <!-- Plant Image -->
-            
+                    <!-- Plant Image -->
+                
 
-                <!-- Plant Buttons TODO: Place plants in 3 different locations visually on page for low, medium, and bright light or display brightness -->
-                <div class="plantControls">
-                    <button id="button4">Water plant</button>
-                    <button id="button5">Move plant</button>
-                    <button id="button6">Sell clippings</button>
-                </div>
+                    <!-- Plant Buttons TODO: Place plants in 3 different locations visually on page for low, medium, and bright light or display brightness -->
+                    <div class="plantControls">
+                        <button id="button4">Water plant</button>
+                        <button id="button5">Sell clippings</button>
+                    </div>
+                </div>    
             </div>
         </div>
 
