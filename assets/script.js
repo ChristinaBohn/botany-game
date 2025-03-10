@@ -3,6 +3,7 @@
 let xp = 0;
 let coins = 30;
 let plantHealth = 100;
+let currentLight;
 let collection = [];
 
 // Player controls
@@ -25,3 +26,28 @@ const coinText = document.querySelector('#coinText');
 const plantName = document.querySelector('#plantName');
 const healthText = document.querySelector('#healthText');
 
+const plants = [
+    {
+        name: "Snake Plant",
+        level: 1,
+        light: ["low", "medium", "bright"],
+        water: 1 - 10,
+        clippingCost: 5
+    },
+    {
+        name: "Hoya",
+        level: 2,
+        light: ["medium", "bright"],
+        water: 3 - 9,
+        clippingCost: 10
+    },
+    {
+        name: "Alocasia",
+        level: 3,
+        light: ["medium"],
+        water: 4 - 8,
+        clippingCost: 15
+    }
+];
+
+const locations = ["low light", "medium light", "bright light"];
