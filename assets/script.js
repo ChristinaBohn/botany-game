@@ -65,7 +65,7 @@ const locations = [
         name: "light",
         "button text": ["Place plant in low light", "Place plant in medium light", "Place plant in bright light"],
         "button functions": [loseGame, askWater, askWater],
-        text: "Where on your shelf will you put your new plant?"
+        text: "Welcome to Botany Bliss! You've just been gifted a Hoya (care level: medium). You bring the plant home, what is your next move?"
     },
     {
         name: "water",
@@ -108,24 +108,26 @@ function update(location) {
 }
 
 function askLight() {
-    update(locations[3]);
+    update(locations[2]);
 }
 
 function askWater() {
-
+    update(locations[3]);
 };
 
-function addPlant() {};
+function addPlant() {
+    alert("Congratulations! Your plant is happy and thriving. It has been added to your collection.")
+    update(locations[2]);
+};
 
 function loseGame() {
-    // Lose game message and restart
-    update(locations[7]);
+    update(locations[6]);
 };
 
 function restart() {
     xp = 0;
     coins = 50;
     xpText.innerText = xp;
-    coinsText.innerText = coins;
+    coinText.innerText = coins;
     askLight();
 }
