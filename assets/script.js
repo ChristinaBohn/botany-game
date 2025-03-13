@@ -1,6 +1,5 @@
 // Each plant is an object, it will have name, water(health), light (first get right or wrong, then move on), clipping cost, do not combine water and light to make health, just keep separate
 
-// Maybe start basic with just one medium plant to kill or not
 
 let xp = 0;
 let coins = 30;
@@ -71,7 +70,7 @@ const locations = [
         name: "water",
         "button text": ["Don't water at all", "Water a little", "Water a lot"],
         "button functions": [addPlant, addPlant, loseGame],
-        text: "How much water do you want to give your plant?"
+        text: "Good job! Hoyas are happy in medium to bright light. How much water do you want to give your plant?"
     },
     {
         name: "add plant"
