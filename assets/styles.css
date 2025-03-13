@@ -91,3 +91,29 @@ h1 {
 #text {
     padding: 20px;
 }
+
+/* Github Icon */
+footer {
+    display: flex;
+    justify-content: center;
+    padding-top: 40px;
+}
+
+footer p {
+    font-family: "Shadows Into Light";
+    color: white;
+}
+
+footer i {
+    padding: 10px;
+    transition: 0.5s;
+}
+
+footer i:hover {
+    transform:scale(1.35);
+}
+
+#gh-link {
+    display: flex;
+    align-items: center;
+}
