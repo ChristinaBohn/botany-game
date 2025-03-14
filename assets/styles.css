@@ -23,6 +23,7 @@ h1 {
     font-family: "Monoton";
     font-size: 4rem;
     font-weight: 200;
+    line-height: 4rem;
     color: white;
 }
 
@@ -30,6 +31,7 @@ h1 {
     font-family: "Shadows Into Light";
     font-size: 1.5rem;
     color: #023436;
+    padding-top: 1rem;
 }
 
 #text {
@@ -129,7 +131,6 @@ footer i:hover {
 
     .controls {
         display: flex;
-        /* justify-content: space-between; */
     }
 
     .controls button {
