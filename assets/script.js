@@ -1,6 +1,5 @@
 // Each plant is an object, it will have name, water(health), light (first get right or wrong, then move on), clipping cost, do not combine water and light to make health, just keep separate
 
-
 let xp = 0;
 let coins = 30;
 let plantHealth = 100;
@@ -117,10 +116,14 @@ function askWater() {
 function addPlant() {
     alert("Congratulations! Your plant is happy and thriving. It has been added to your collection.")
     update(locations[2]);
+    xp += 5;
+    xpText.innerText = xp;
 };
 
 function loseGame() {
     update(locations[6]);
+    xp -= 5;
+    xpText.innerText = xp;
 };
 
 function restart() {
