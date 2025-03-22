@@ -28,7 +28,7 @@ const plants = [
         name: "Snake Plant (easy care)",
         light: {
             "button text": ["Place plant in low light", "Place plant in medium light", "Place plant in bright light"],
-            "button functions": [askWater, askWater, askWater],
+            "button functions": [newPlant.askLight, newPlant.askLight, newPlant.askLight],
             text: "You have received a Snake Plant (easy care)! Where on your plant shelf will you place your plant?"
         },
         water: {
@@ -43,12 +43,12 @@ const plants = [
         name: "Hoya (medium care)",
         light: {
             "button text": ["Place plant in low light", "Place plant in medium light", "Place plant in bright light"],
-            "button functions": [loseGame, askWater, askWater],
+            "button functions": [losePlant, newPlant.askWater, newPlant.askWater],
             text: "You have received a Hoya (medium care)! Where on your plant shelf will you place your plant?"
         },
         water: {
             "button text": ["Don't water at all", "Water a little", "Water a lot"],
-            "button functions": [loseGame, addPlant, loseGame],
+            "button functions": [losePlant, addPlant, losePlant],
             text: "Good job! Hoyas are happy in medium to bright light. How much water do you want to give your plant?"
         },
         clippingCost: 10
@@ -58,29 +58,31 @@ const plants = [
         name: "Calathea (difficult care)",
         light: {
             "button text": ["Place plant in low light", "Place plant in medium light", "Place plant in bright light"],
-            "button functions": [loseGame, askWater, loseGame],
+            "button functions": [losePlant, newPlant.askWater, losePlant],
             text: "You have received a Clathea (difficult care)! Where on your plant shelf will you place your plant?"
         },
         water: {
             "button text": ["Don't water at all", "Water a little", "Water a lot"],
-            "button functions": [loseGame, addPlant, loseGame],
+            "button functions": [losePlant, addPlant, losePlant],
             text: "Good job! Calatheas are happy in medium light only. How much water do you want to give your plant?"
         },
         clippingCost: 15
     }
 ];
 
+let plantShop = [...plants];
+
 const locations = [
     {
         name: "welcome",
         "button text": ["Begin!", "Begin!", "Begin!"],
-        "button functions": [newPlant, newPlant, newPlant],
+        "button functions": [newPlant.askLight, newPlant.askLight, newPlant.askLight],
         text: "Welcome to Botany Bliss. Take care of each new plant based on your plant knowledge and watch your plant collection grow!"
     },
     {
         name: "lose plant",
         "button text": ["Try again", "Try again", "Try again"],
-        "button functions": [newPlant, newPlant, newPlant],
+        "button functions": [newPlant.askLight, newPlant.askLight, newPlant.askLight],
         text: "Oh no, your new plant didn't like that! You've lost this plant. Try again?"
     },
     {
@@ -97,12 +99,40 @@ const locations = [
     }
 ];
 
-let plantShop = [...plants];
+// Use same random plant for one iteration each of askLight and askWater
+function useRandomIndex() {
+    let plantIndex = Math.floor(Math.random() * 3);
+    let currentPlant = plants[plantIndex];
+        
+    function askLight() {
+        button1.innerText = currentPlant["light"]["button text"][0];
+        button2.innerText = currentPlant["light"]["button text"][1];
+        button3.innerText = currentPlant["light"]["button text"][2];
+        button1.onclick = currentPlant["light"]["button functions"][0];
+        button2.onclick = currentPlant["light"]["button functions"][1];
+        button3.onclick = currentPlant["light"]["button functions"][2];
+        text.innerHTML = currentPlant.light.text;
+    };
+
+    function askWater() {
+        button1.innerText = currentPlant["water"]["button text"][0];
+        button2.innerText = currentPlant["water"]["button text"][1];
+        button3.innerText = currentPlant["water"]["button text"][2];
+        button1.onclick = currentPlant["water"]["button functions"][0];
+        button2.onclick = currentPlant["water"]["button functions"][1];
+        button3.onclick = currentPlant["water"]["button functions"][2];
+        text.innerHTML = currentPlant.water.text;
+    };
+
+    return { askLight, askWater };
+};
+
+const newPlant = useRandomIndex();
 
 // Initialize buttons
-button1.onclick = newPlant;
-button2.onclick = newPlant;
-button3.onclick = newPlant;
+button1.onclick = newPlant.askLight;
+button2.onclick = newPlant.askLight;
+button3.onclick = newPlant.askLight;
 
 
 function update(location) {
@@ -123,38 +153,8 @@ function welcome() {
     collection = [""];
     plantShop = [...plants];
     update(locations[0]);
-    newPlant();
+    newPlant.askLight();
 }
-
-// console.log(plants[0].light.text);
-// console.log(plants[1]["light"]["button text"][0]);
-
-// Receive random plant and ask about light
-function newPlant() {
-    let plantIndex = Math.floor(Math.random() * 3);
-    let currentPlant = plants[plantIndex];
-
-    button1.innerText = currentPlant[light]["button text"][0];
-    button2.innerText = currentPlant[light]["button text"][1];
-    button3.innerText = currentPlant[light]["button text"][2];
-    button1.onclick = currentPlant[light]["button functions"][0];
-    button2.onclick = currentPlant[light]["button functions"][1];
-    button3.onclick = currentPlant[light]["button functions"][2];
-
-    console.log(plantId);
-    console.log(currentPlant.light.text);
-    text.innerHTML = currentPlant.light.text;
-
-
-}
-
-// function askLight() {
-//     update(locations[2]);
-// }
-
-function askWater() {
-    update(locations[3]);
-};
 
 function addPlant() {
     alert("Congratulations! Your plant is happy and thriving. It has been added to your collection.")
@@ -163,10 +163,14 @@ function addPlant() {
     xpText.innerText = xp;
 };
 
-function loseGame() {
-    update(locations[6]);
+function losePlant() {
+    update(locations[1])
     xp -= 5;
     xpText.innerText = xp;
+};
+
+function loseGame() {
+    update(locations[2]);
 };
 
 welcome();
