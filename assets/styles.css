@@ -71,7 +71,7 @@ h1 {
 .controls button:active {
     box-shadow: 1px 1px #abc1a9,
         inset 3px 3px #788777;
-    background-color: #6bad93;
+    background: linear-gradient(#6bad93, #77BFA3);
 }
 
 /* Hide plant tiles */

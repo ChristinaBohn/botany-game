@@ -1,7 +1,10 @@
+// TIP: CODE IN SMALL STEPS AND TEST AS YOU GO - Use console.log and test one thing at a time
+
 let xp = 0;
 let coins = 30;
 let plantHealth = 100;
 let collection = [];
+const functions = {};
 
 // Player controls
 const button1 = document.querySelector('#button1');
@@ -28,12 +31,12 @@ const plants = [
         name: "Snake Plant (easy care)",
         light: {
             "button text": ["Place plant in low light", "Place plant in medium light", "Place plant in bright light"],
-            "button functions": [newPlant.askLight, newPlant.askLight, newPlant.askLight],
+            "button functions": ['newPlant.askLight', 'newPlant.askLight', 'newPlant.askLight'],
             text: "You have received a Snake Plant (easy care)! Where on your plant shelf will you place your plant?"
         },
         water: {
             "button text": ["Don't water at all", "Water a little", "Water a lot"],
-            "button functions": [addPlant, addPlant, addPlant],
+            "button functions": ['addPlant', 'addPlant', 'addPlant'],
             text: "Good job! Snake plants are happy in any light. How much water do you want to give your plant?"
         },
         clippingCost: 5
@@ -43,12 +46,12 @@ const plants = [
         name: "Hoya (medium care)",
         light: {
             "button text": ["Place plant in low light", "Place plant in medium light", "Place plant in bright light"],
-            "button functions": [losePlant, newPlant.askWater, newPlant.askWater],
+            "button functions": ['losePlant', 'newPlant.askWater', 'newPlant.askWater'],
             text: "You have received a Hoya (medium care)! Where on your plant shelf will you place your plant?"
         },
         water: {
             "button text": ["Don't water at all", "Water a little", "Water a lot"],
-            "button functions": [losePlant, addPlant, losePlant],
+            "button functions": ['losePlant', 'addPlant', 'losePlant'],
             text: "Good job! Hoyas are happy in medium to bright light. How much water do you want to give your plant?"
         },
         clippingCost: 10
@@ -58,12 +61,12 @@ const plants = [
         name: "Calathea (difficult care)",
         light: {
             "button text": ["Place plant in low light", "Place plant in medium light", "Place plant in bright light"],
-            "button functions": [losePlant, newPlant.askWater, losePlant],
+            "button functions": ['losePlant', 'newPlant.askWater', 'losePlant'],
             text: "You have received a Clathea (difficult care)! Where on your plant shelf will you place your plant?"
         },
         water: {
             "button text": ["Don't water at all", "Water a little", "Water a lot"],
-            "button functions": [losePlant, addPlant, losePlant],
+            "button functions": ['losePlant', 'addPlant', 'losePlant'],
             text: "Good job! Calatheas are happy in medium light only. How much water do you want to give your plant?"
         },
         clippingCost: 15
@@ -76,25 +79,25 @@ const locations = [
     {
         name: "welcome",
         "button text": ["Begin!", "Begin!", "Begin!"],
-        "button functions": [newPlant.askLight, newPlant.askLight, newPlant.askLight],
+        "button functions": ['newPlant.askLight', 'newPlant.askLight', 'newPlant.askLight'],
         text: "Welcome to Botany Bliss. Take care of each new plant based on your plant knowledge and watch your plant collection grow!"
     },
     {
         name: "lose plant",
         "button text": ["Try again", "Try again", "Try again"],
-        "button functions": [newPlant.askLight, newPlant.askLight, newPlant.askLight],
+        "button functions": ['newPlant.askLight', 'newPlant.askLight', 'newPlant.askLight'],
         text: "Oh no, your new plant didn't like that! You've lost this plant. Try again?"
     },
     {
         name: "lose game",
         "button text": ["Start over?", "Start over?", "Start over?"],
-        "button functions": [welcome, welcome, welcome],
+        "button functions": ['welcome', 'welcome', 'welcome'],
         text: "Oh no, your new plant didn't like that and you have no remaining plants in your collection! Game over. Would you like to play again?"
     },
     {
         name: "win game",
         "button text": ["Start over?", "Start over?", "Start over?"],
-        "button functions": [welcome, welcome, welcome],
+        "button functions": ['welcome', 'welcome', 'welcome'],
         text: "Congratulations, you have every available plant in your home collection! Look at those green thumbs. Would you like to play again?"
     }
 ];
@@ -112,6 +115,7 @@ function useRandomIndex() {
         button2.onclick = currentPlant["light"]["button functions"][1];
         button3.onclick = currentPlant["light"]["button functions"][2];
         text.innerHTML = currentPlant.light.text;
+        console.log("Ask about light")
     };
 
     function askWater() {
@@ -122,18 +126,22 @@ function useRandomIndex() {
         button2.onclick = currentPlant["water"]["button functions"][1];
         button3.onclick = currentPlant["water"]["button functions"][2];
         text.innerHTML = currentPlant.water.text;
+        console.log("Ask about water")
     };
 
-    return { askLight, askWater };
+// Initialize buttons
+button1.onclick = useRandomIndex.askLight;
+button2.onclick = useRandomIndex.askLight;
+button3.onclick = useRandomIndex.askLight;
+
+    return { 
+        askLight,
+        askWater
+    };
+
 };
 
 const newPlant = useRandomIndex();
-
-// Initialize buttons
-button1.onclick = newPlant.askLight;
-button2.onclick = newPlant.askLight;
-button3.onclick = newPlant.askLight;
-
 
 function update(location) {
     button1.innerText = location["button text"][0];
@@ -153,7 +161,6 @@ function welcome() {
     collection = [""];
     plantShop = [...plants];
     update(locations[0]);
-    newPlant.askLight();
 }
 
 function addPlant() {
@@ -173,9 +180,17 @@ function loseGame() {
     update(locations[2]);
 };
 
+functions['newPlant.askLight'] = newPlant.askLight;
+functions['newPlant.askWater'] = newPlant.askWater;
+functions['update'] = update;
+functions['welcome'] = welcome;
+functions['addPlant'] = addPlant;
+functions['losePlant'] = losePlant;
+functions['loseGame'] = loseGame;
+
 welcome();
 
-// Game planning
+// Game planning:
 
 // Welcome (restart takes you here, or losing all plants)
     // Explain game and reveal begin button - takes you to new plant
